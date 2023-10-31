@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
          appBar: AppBar(
            backgroundColor: Colors.blue,
-           title: Text('Assignment: 6'),
+           title: Text('Row-Column: 7'),
            leading: Icon(Icons.home),
            centerTitle: true,
            actions: [
@@ -23,6 +23,15 @@ class _HomePageState extends State<HomePage> {
              ),
            ],
          ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+
+            )
+          ],
+        ),
+      ),
       body: Center(
         child: Container(
           width: 250.0,
