@@ -7,6 +7,7 @@ class HomePage2 extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage2> {
+  List<String> images= ['assets/images/1.jpg','assets/images/2.jpg','assets/images/3.jpg','assets/images/4.jpg','assets/images/5.jpg','assets/images/6.jpg','assets/images/7.jpg'];
   @override
   Widget build(BuildContext context) {
     double _width =  MediaQuery.of(context).size.width;
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage2> {
     return Scaffold(
          appBar: AppBar(
            backgroundColor: Colors.blue,
-           title: Text('Row-Column: 7'),
+           title: Text('Image Listview: 8'),
            //leading: Icon(Icons.home),
            centerTitle: true,
            actions: [
@@ -56,134 +57,20 @@ class _HomePageState extends State<HomePage2> {
           ],
         ),
       ),
-      body: Center(
+      body: ListView.separated(
+          shrinkWrap: true,
+          itemCount: images.length,
+          separatorBuilder: (context, child){
+            return SizedBox(height: 14.0);
+          },
+          itemBuilder: (context, index){
+            return Image.asset(
+                fit:BoxFit.cover,
+                images[index]
+            );
+          }
+      )
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,  //start/end
-        mainAxisAlignment: MainAxisAlignment.spaceAround,  //spaceBetween/center
-        children:[
-          Expanded(
-            flex: 2,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-              color: Colors.deepOrangeAccent,
-                //width: _width,
-                child: Row(
-                  children: [
-                     Container(
-                       height: 200.0,
-                       width: 150.0,
-                       color: Colors.blue,
-                       child: Center(
-                         child: Column(
-                           children: [
-                             Text('1', style: TextStyle(
-                                 color:Colors.white,
-                                 fontSize: 20.0
-                             )
-                             ),Text('Multi Line', style: TextStyle(
-                                 color:Colors.white,
-                                 fontSize: 20.0
-                             )
-                             )
-                           ],
-                         ),
-                       ),
-                     ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      height: 200.0,
-                      width: 150.0,
-                      color: Colors.deepOrange,
-                      child: Center(
-                        child: Text('2', style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 20.0
-                        ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      height: 200.0,
-                      width: 150.0,
-                      color: Colors.greenAccent,
-                      child: Center(
-                        child: Text('3', style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 20.0
-                        ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      height: 200.0,
-                      width: 150.0,
-                      color: Colors.black12,
-                      child: Center(
-                        child: Text('5', style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 20.0
-                        ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-
-                    Container(
-                      height: 200.0,
-                      width: 150.0,
-                      color: Colors.deepOrange,
-                      child: Center(
-                        child: Text('5', style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 20.0
-                        ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-         ),
-            ),
-          ),
-          SizedBox(height: 10.0),
-          Expanded(
-            flex: 3,
-            child: Container(
-              width: _width,
-              color: Colors.grey,
-            ),
-          ),
-          SizedBox(height: 10.0),
-          Expanded(
-            child: Container(
-              height: 200.0,
-              width: _width,
-              color: Colors.deepOrangeAccent,
-              child:  Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('This is 3rd Container', style: TextStyle(
-                      color:Colors.white,
-                      fontSize: 20.0
-            ),
-            ),
-                  ),
-                ],
-              ),),
-          ),
-        ]
-        )
-
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: Icon(Icons.add),
-      ),
     );
   }
 }
